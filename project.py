@@ -3,8 +3,6 @@ import numpy as np
 import seaborn as sns
 import tensorflow as tf
 import matplotlib.pyplot as plt
-
-# Import the needed sklearn libraries
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -17,18 +15,14 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Lambda, Flatten, LSTM
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.optimizers import Adam, RMSprop
-#from tensorflow.keras.utils import np_utils
 from tensorflow.keras.utils import to_categorical
 from sklearn import preprocessing
 import keras
-import numpy as np
 from tensorflow.keras.layers import concatenate
 from sklearn.metrics import classification_report
 from PIL import Image
 from sklearn.metrics import accuracy_score , recall_score , precision_score , f1_score , confusion_matrix
-#Importing required libraries
 from sklearn.datasets import load_breast_cancer
-import pandas as pd
 from sklearn.model_selection import KFold
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
@@ -60,7 +54,7 @@ def visualize(path):
     fig, ((ax0, ax1), (ax2, ax3),(ax4, ax5)) = plt.subplots(nrows=3, ncols=2,figsize=(12,12))
 
 
-    # continous attributes
+    # continuous attributes
     x = data['Age']
     ax0.hist(x,range=[0, 150], color = 'orange', edgecolor = 'black', bins = 10)
     ax0.legend(prop={'size': 10})
@@ -120,7 +114,6 @@ def split(data):
 
 
 def preprocess_image(data, path_to_images= 'Images'):
-
     # split the images into training and testing sets following 80/20 partition
     train_X, test_X, train_y, test_Y = split(data)
     trainPet_ID = train_X[:, -1]
@@ -128,7 +121,7 @@ def preprocess_image(data, path_to_images= 'Images'):
 
 
     # load and resize images then saving them into numpy array and return it from the method
-
+    
     # train
     trainImages= np.zeros(shape=(len(trainPet_ID),32,32,3)) 
 
@@ -239,10 +232,8 @@ def train_mlp(input_dim, input_train, input_test, target_train, target_test):
     inputs = np.concatenate((input_train, input_test), axis=0)
     targets = np.concatenate((target_train, target_test), axis=0)
 
-
     # define the K-fold Cross Validator
     kfold = KFold(n_splits=10, shuffle=True)
-
 
     max_Acc = 0
     max_model = 0
@@ -443,7 +434,6 @@ def predict_evalute (test_images, test_X, test_Y, model):
     # accuracy
     accuracy = accuracy_score(testY, prediction)
     print('Accuracy: ', accuracy)
-
 
     # recall
     recall = recall_score(testY, prediction, average=None)
