@@ -8,7 +8,7 @@ Pet adoption prediction is a multi-class classification problem to predict the s
 The dataset was adopted from Kaggle competition "PetFinder.my Adoption Prediction". The dataset includes categorical, numerical, and image data.
 
 ## Data Preprocessing 
-The dataset is split into training and testing sets folling 80/20 partition. Categorical data is preprocessed using one-hot representation. Whereas, continuous data by scaling their values to be in the range [0,1]. Finally, the label is preprocessed as one-hot representation.
+The [dataset](https://www.kaggle.com/c/petfinder-adoption-prediction) is split into training and testing sets folling 80/20 partition. Categorical data is preprocessed using one-hot representation. Whereas, continuous data by scaling their values to be in the range [0,1]. Finally, the label is preprocessed as one-hot representation.
 
 ## Multi-Layer Perceptron (MLP)
 Trains the model on categorical and numerical data found in "dataset.csv". Moreover, the model contains three layers (including input and output layers). 10-fold cross validation is performed to select the number of units [10, 32 or 64] in the middle hidden layer, such that the number of units that produces the highest accuracy is chosen. Finally, the accuracy of the model is plotted against each epoch.
